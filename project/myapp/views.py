@@ -6,6 +6,7 @@ from typing import Dict,Union, List
 from django.views.decorators.csrf import csrf_exempt 
 from .models import Post
 from .models import Contacts
+from .models import Restraunt
 
 # Create your views here.
 @csrf_exempt
@@ -88,7 +89,7 @@ def song_es(request):
     return render(request,'song.html',context)
 @csrf_exempt
 def registration_form(request):
-        if(request.method == 'POST'):
+        if request.method == 'POST':
            data_json = json.loads(request.body)
            data = {
                 "first_name": data_json.get("first_name"),
@@ -102,3 +103,19 @@ def registration_form(request):
            return JsonResponse(data)
         elif(request.method == 'GET'):
              return render(request,'registration_form.html')
+        
+@csrf_exempt
+def restraunt_(request:HttpRequest):
+    if request.method == 'POST':
+        body = json.loads(request.body)
+        name = body.get("name")
+        specialization = body.get("specialization")
+        adress = body.get("adress")
+        web_url = body.get("web_url")
+        phone_number = body.get("phone_number")
+        restraunt = Restraunt(name=name,specialization=specialization,adress=adress,web_url=web_url,phone_number=phone_number)
+        restraunt.save()
+        return JsonResponse({"name":name},status=201)
+    elif request.method == 'GET':
+        restraunts = Restraunt.objects.all() 
+        return render(request,'restraunt.html',{"data":restraunts})

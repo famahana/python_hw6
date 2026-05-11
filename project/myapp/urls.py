@@ -11,7 +11,8 @@ urlpatterns = [
     path('song_fr',views.song_fr),
     path('song_de',views.song_de),
     path('song_es',views.song_es),
-    path('registration',views.registration_form)
+    path('registration',views.registration_form),
+    path('restraunts',views.restraunt_)
 
     #path('about/<int:id>',views.about)
 ]

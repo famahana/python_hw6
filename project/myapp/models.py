@@ -16,6 +16,14 @@ class Contacts(models.Model):
     phoneNumber = models.CharField(max_length=20)
     text = models.TextField(max_length=500)
 
+class Restraunt(models.Model):
+    name = models.CharField(max_length=50)
+    specialization = models.CharField(max_length=50)
+    adress = models.CharField(max_length=100)
+    web_url = models.URLField(max_length=200)
+    phone_number = models.CharField(max_length=20)
     
 
+    
 
+print("RESTRAUNT LOADED FROM:", __file__)

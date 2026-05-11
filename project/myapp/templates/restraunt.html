@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <title>Додати ресторан</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #f2f2f2;
+            margin: 40px;
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            width: 500px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0 15px 0;
+        }
+
+        button {
+            padding: 10px 20px;
+        }
+        .card {
+            border: 1px solid #ccc;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+
+        a {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <h1>Додати ресторан</h1>
+
+    <form id="restrauntForm">
+        <label>Назва</label>
+        <input type="text" name="name">
+
+        <label>Спеціалізація</label>
+        <input type="text" name="specialization">
+
+        <label>Адреса</label>
+        <input type="text" name="adress">
+
+        <label>Вебсайт</label>
+        <input type="text" name="web_url">
+
+        <label>Контактний телефон</label>
+        <input type="text" name="phone_number">
+
+        <button type="submit">Зберегти</button>
+
+    </form>
+    <div class="container">
+
+    <h1>Список ресторанів</h1>
+
+    {% for r in data %}
+
+        <div class="card">
+
+            <h3>{{ r.name }}</h3>
+
+            <p><b>Спеціалізація:</b> {{ r.specialization }}</p>
+            <p><b>Адреса:</b> {{ r.adress }}</p>
+            <p><b>Телефон:</b> {{ r.phone_number }}</p>
+
+            {% if r.web_url %}
+                <p>
+                    <a href="{{ r.web_url }}" target="_blank">
+                        Вебсайт
+                    </a>
+                </p>
+            {% endif %}
+
+           
+
+        </div>
+
+    {% empty %}
+
+        <p>Ресторанів поки немає</p>
+
+    {% endfor %}
+
+</div>
+
+</div>
+
+</body>
+<script src="{% static 'myapp/js/restraunts_form.js' %}"></script>
+    
+</html>
