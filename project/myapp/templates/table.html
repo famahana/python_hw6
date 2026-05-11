@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Таблиця множення</title>
+
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+
+        td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
+
+</head>
+<body>
+
+    <h1>Таблиця множення</h1>
+
+    <table>
+
+        {% for row in table %}
+        <tr>
+
+            {% for cell in row %}
+            <td>{{ cell }}</td>
+            {% endfor %}
+
+        </tr>
+        {% endfor %}
+
+    </table>
+
+</body>
+</html>

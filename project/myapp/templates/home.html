@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block content %}
+
+<section
+class="bg-cover bg-center min-h-screen flex items-center justify-center text-white"
+style="background-image:url('https://images.unsplash.com/photo-1518998053901-5348d3961a04');"
+>
+
+<div class="bg-black/70 p-10 rounded-3xl shadow-2xl max-w-4xl text-center">
+
+    <img
+        src="{% static 'myapp/images/pngtree-museum-day-yellow-building-png-image_9125292.png' %}"
+        class="mx-auto w-48 mb-6"
+    >
+
+    <h2 class="text-5xl font-bold mb-4">
+        Discover the World of Art & History
+    </h2>
+
+    <p class="text-xl mb-8">
+        Explore timeless collections, inspiring exhibitions,
+        and the stories behind every masterpiece.
+    </p>
+    <button
+        class="bg-amber-500 hover:bg-amber-600 px-6 py-3 rounded-xl text-lg">
+        Explore Exhibitions
+    </button>
+    <form id ="contactsForm">
+  <div class="mb-3">
+    <input type="text" class="form-control" placeholder="title" id="title" name="title" >
+  </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+</div>
+</section>
+<div >
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Title</th>
+    </tr>
+  </thead>
+  <tbody>
+    {%if data%} {%for post in data%}
+    <tr>
+      <td scope="row">{{post.id}}</td>
+      <td>{{post.title}}</td>
+    </tr>
+    {%endfor%} {%endif%}
+  </tbody>
+</table>
+</div>
+<script src="{% static 'myapp/js/form.js' %}"></script>
+
+{% endblock %}
