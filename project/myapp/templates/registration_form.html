@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Реєстрація</title>
+
+    <style>
+
+        body {
+            font-family: Arial;
+            background-color: #f2f2f2;
+            margin: 40px;
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            width: 500px;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+        }
+
+        button {
+            padding: 10px 20px;
+        }
+
+        .result {
+            margin-top: 30px;
+            padding: 20px;
+            border: 1px solid black;
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <div class="container">
+
+        <h1>Реєстрація</h1>
+
+        <form id="registerForm">
+
+            <label>Ім'я</label>
+            <input type="text" id="first_name" name="first_name">
+
+            <label>Прізвище</label>
+            <input type="text" id="last_name" name="last_name">
+
+
+            <label>Вік</label>
+            <input type="number" id="age" name="age">
+
+            <label>Email</label>
+            <input type="email" id="email" name="email">
+
+            <label>Стать</label>
+
+            <select id="gender" name="gender">
+                <option>Чоловік</option>
+                <option>Жінка</option>
+            </select>
+
+            <label>Адреса доставки</label>
+
+            <textarea id="address" name="address"></textarea>
+
+            <label>
+                <input type="checkbox" id="subscribe" name="subscribe">
+                Бажаєте підписатися на новини нашого інтернет-магазину?
+            </label>
+
+            <br><br>
+
+            <button type="submit">
+                Відправити
+            </button>
+
+        </form>
+
+        <div class="result" id="result">
+
+        </div>
+    </div>
+</body>
+<script src="/static/myapp/js/registration_form.js"></script>
+</html>

@@ -86,5 +86,19 @@ def song_es(request):
         "song": "Ayer, todas mis preocupaciones parecían tan lejanas\nAhora parece que están aquí para quedarse\nOh, creo en ayer"
     }
     return render(request,'song.html',context)
-
-    
+@csrf_exempt
+def registration_form(request):
+        if(request.method == 'POST'):
+           data_json = json.loads(request.body)
+           data = {
+                "first_name": data_json.get("first_name"),
+                "last_name": data_json.get("last_name"),
+                "age": data_json.get("age"),
+                "email": data_json.get("email"),
+                "gender": data_json.get("gender"),
+                "address": data_json.get("address"),
+                "subscribe": data_json.get("subscribe")
+           }
+           return JsonResponse(data)
+        elif(request.method == 'GET'):
+             return render(request,'registration_form.html')
