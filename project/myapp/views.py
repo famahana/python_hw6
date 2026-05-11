@@ -62,4 +62,29 @@ def programer_day(request):
     start_of_year = datetime(current_year, 1, 1)
     programmer_day = start_of_year + timedelta(days=255)
     return render(request,'programer_day.html',context={"programmer_day":programmer_day})
+def song_en(request):
+    context = {
+        "title": "English",
+        "song": "Yesterday, all my troubles seemed so far away\nNow it looks as though they're here to stay\nOh, I believe in yesterday"
+    }
+    return render(request,'song.html',context)
+def song_fr(request):
+    context = {
+        "title": "French",
+        "song": "Hier, toutes mes peines semblaient si lointaines\nMaintenant, il semble que elles sont ici pour rester\nOh, je crois en hier"
+    }
+    return render(request,'song.html',context)
+def song_de(request):
+    context = {
+        "title": "German",
+        "song": "Gestern, all meine Sorgen schienen so weit weg\nJetzt sieht es so aus, als würden sie hier bleiben\nOh, ich glaube an gestern"
+    }
+    return render(request,'song.html',context)
+def song_es(request):
+    context = {
+        "title": "Spanish",
+        "song": "Ayer, todas mis preocupaciones parecían tan lejanas\nAhora parece que están aquí para quedarse\nOh, creo en ayer"
+    }
+    return render(request,'song.html',context)
+
     
