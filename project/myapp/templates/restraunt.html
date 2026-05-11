@@ -86,7 +86,8 @@
                 </p>
             {% endif %}
 
-           
+            <button onclick="updateRestraunt({{ r.id }})">Редагувати</button>
+            <button onclick="deleteRestraunt({{ r.id }})">Видалити</button>
 
         </div>
 
@@ -95,6 +96,11 @@
         <p>Ресторанів поки немає</p>
 
     {% endfor %}
+    <input type="text" id="searchInput" placeholder="Пошук по спеціалізації">
+    <button onclick="searchRestraunts()">Пошук</button>
+
+<div id="list"></div>
+</form>
 
 </div>
 

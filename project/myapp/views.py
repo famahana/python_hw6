@@ -119,3 +119,44 @@ def restraunt_(request:HttpRequest):
     elif request.method == 'GET':
         restraunts = Restraunt.objects.all() 
         return render(request,'restraunt.html',{"data":restraunts})
+@csrf_exempt
+def delete_restraunt(request:HttpRequest,id):
+    if request.method == 'POST':
+        try:
+            restraunt = Restraunt.objects.get(id=id)
+            restraunt.delete()
+            return JsonResponse({"message": "Ресторан видалено"}, status=200)
+        except Restraunt.DoesNotExist:
+            return JsonResponse({"message": "Ресторан не знайдено"}, status=404)
+@csrf_exempt
+def update_restraunt(request:HttpRequest,id):
+    if request.method == 'POST':
+        body = json.loads(request.body)
+        restraunt = Restraunt.objects.get(id=id)
+        restraunt.name = body.get("name")
+        restraunt.specialization = body.get("specialization")
+        restraunt.adress = body.get("adress")
+        restraunt.web_url = body.get("web_url")
+        restraunt.phone_number = body.get("phone_number")
+        restraunt.save()
+        return JsonResponse({"status": "updated"})
+@csrf_exempt    
+def search_restraunt(request):
+    query = request.GET.get("q", "")
+
+    results = Restraunt.objects.filter(
+        specialization__icontains=query
+    )
+
+    data = []
+    for r in results:
+        data.append({
+            "id": r.id,
+            "name": r.name,
+            "specialization": r.specialization,
+            "adress": r.adress,
+            "web_url": r.web_url,
+            "phone_number": r.phone_number,
+        })
+
+    return JsonResponse(data, safe=False)

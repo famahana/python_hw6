@@ -12,7 +12,9 @@ urlpatterns = [
     path('song_de',views.song_de),
     path('song_es',views.song_es),
     path('registration',views.registration_form),
-    path('restraunts',views.restraunt_)
-
+    path('restraunts',views.restraunt_),
+    path('restraunts/delete/<int:id>', views.delete_restraunt),
+    path('restraunts/update/<int:id>', views.update_restraunt),
+    path('restraunts/search/', views.search_restraunt),
     #path('about/<int:id>',views.about)
 ]
